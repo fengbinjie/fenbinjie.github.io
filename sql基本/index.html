@@ -1,0 +1,287 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="我的博客"/><title>sql基本 | 知识汇集</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/highlight.css"/><link rel="stylesheet" type="text/css" href="/css/font.css"/><link rel="stylesheet" type="text/css" href="/css/noise.css"/><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/标准sql/">标准sql</a></div><div class="post-time">2018-05-16</div></div></div><div class="container post-header"><h1>sql基本</h1></div><div class="container post-content"><hr>
+<h2 id="SQL-SELECT-DISTINCT"><a href="#SQL-SELECT-DISTINCT" class="headerlink" title="SQL SELECT DISTINCT"></a>SQL SELECT DISTINCT</h2><p>DISTINCT关键词用于返回唯一不同的值</p>
+<p>下面选自”Websites”表的数据</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">url</th>
+<th style="text-align:center">alexa</th>
+<th style="text-align:center">country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Google</td>
+<td style="text-align:center"><a href="https://www.google.com/" target="_blank" rel="noopener">https://www.google.com/</a></td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">USA</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">淘宝</td>
+<td style="text-align:center"><a href="https://www.taobao.com/" target="_blank" rel="noopener">https://www.taobao.com/</a></td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">CN</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">菜鸟教程</td>
+<td style="text-align:center"><a href="http://www.runnoob.com/" target="_blank" rel="noopener">http://www.runnoob.com/</a></td>
+<td style="text-align:center">4689</td>
+<td style="text-align:center">CN</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">微博</td>
+<td style="text-align:center"><a href="http://weibo.com/" target="_blank" rel="noopener">http://weibo.com/</a></td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">CN</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">FaceBook</td>
+<td style="text-align:center"><a href="https://www.facebook.com/" target="_blank" rel="noopener">https://www.facebook.com/</a></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">USA</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实例：select distinct country from websits;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出结果：USA,CN</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="SQL-WHERE-子句"><a href="#SQL-WHERE-子句" class="headerlink" title="SQL WHERE 子句"></a>SQL WHERE 子句</h2><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>不等于。<strong>注释：</strong>在 SQL 的一些版本中，该操作符可被写成 !=</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>BETWEEN</td>
+<td>在某个范围内</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>模糊查询</td>
+</tr>
+<tr>
+<td>IN</td>
+<td>制定针对某个列的多个可能值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="特殊条件"><a href="#特殊条件" class="headerlink" title="特殊条件"></a>特殊条件</h3><p><strong>1.空值判断： is null</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select * from emp where comm is null;</span><br></pre></td></tr></table></figure>
+<p>查询 emp 表中 comm 列中的空值。</p>
+<p><strong>2.between and (在 之间的值)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select * from emp where sal between 1500 and 3000;</span><br></pre></td></tr></table></figure>
+<p>查询 emp 表中 SAL 列中大于 1500 的小于 3000 的值。</p>
+<p>注意：大于等于 1500 且小于等于 3000， 1500 为下限，3000 为上限，下限在前，上限在后，查询的范围包涵有上下限的值。</p>
+<p><strong>3.In</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select * from emp where sal in (5000,3000,1500);</span><br></pre></td></tr></table></figure>
+<p>查询 EMP 表 SAL 列中等于 5000，3000，1500 的值。</p>
+<p><strong>4.like</strong></p>
+<p>Like模糊查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select * from emp where ename like &apos;M%&apos;;</span><br></pre></td></tr></table></figure>
+<p>查询 EMP 表中 Ename 列中有 M 的值，M 为要查询内容中的模糊信息。</p>
+<ul>
+<li><strong>%</strong> 表示多个字值，<strong>_</strong> 下划线表示一个字符；</li>
+<li><strong>M%</strong> : 为通配符，正则表达式，表示的意思为模糊查询信息为 M 开头的。</li>
+<li><strong>%M%</strong> : 表示查询包含M的所有内容。</li>
+<li><strong>%M_</strong> : 表示查询以M在倒数第二位的所有内容。</li>
+</ul>
+<h1 id="SQL-AND-amp-OR-运算符"><a href="#SQL-AND-amp-OR-运算符" class="headerlink" title="SQL AND &amp; OR 运算符"></a>SQL AND &amp; OR 运算符</h1><p>AND &amp; OR 运算符用于基于一个以上的条件对记录进行过滤。</p>
+<hr>
+<h2 id="SQL-AND-amp-OR-运算符-1"><a href="#SQL-AND-amp-OR-运算符-1" class="headerlink" title="SQL AND &amp; OR 运算符"></a>SQL AND &amp; OR 运算符</h2><p>如果第一个条件和第二个条件都成立，则 AND 运算符显示一条记录。</p>
+<p>如果第一个条件和第二个条件中只要有一个成立，则 OR 运算符显示一条记录。</p>
+<hr>
+<h2 id="演示数据库"><a href="#演示数据库" class="headerlink" title="演示数据库"></a>演示数据库</h2><p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 “Websites” 表的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| id | name         | url                       | alexa | country |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| 1  | Google       | https://www.google.cm/    | 1     | USA     |</span><br><span class="line">| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |</span><br><span class="line">| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |</span><br><span class="line">| 4  | 微博          | http://weibo.com/         | 20    | CN      |</span><br><span class="line">| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="AND-运算符实例"><a href="#AND-运算符实例" class="headerlink" title="AND 运算符实例"></a>AND 运算符实例</h2><p>下面的 SQL 语句从 “Websites” 表中选取国家为 “CN” 且alexa排名大于 “50” 的所有网站：</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>SELECT * FROM Websites WHERE country=’CN’ AND alexa &gt; 50;</p>
+<p>执行输出结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/and-or1.jpg" alt="img"></p>
+<hr>
+<h2 id="OR-运算符实例"><a href="#OR-运算符实例" class="headerlink" title="OR 运算符实例"></a>OR 运算符实例</h2><p>下面的 SQL 语句从 “Websites” 表中选取国家为 “USA” 或者 “CN” 的所有客户：</p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p>SELECT * FROM Websites WHERE country=’USA’ OR country=’CN’;</p>
+<p>执行输出结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/and-or2.jpg" alt="img"></p>
+<hr>
+<h2 id="结合-AND-amp-OR"><a href="#结合-AND-amp-OR" class="headerlink" title="结合 AND &amp; OR"></a>结合 AND &amp; OR</h2><p>您也可以把 AND 和 OR 结合起来（使用圆括号来组成复杂的表达式）。</p>
+<p>下面的 SQL 语句从 “Websites” 表中选取 alexa 排名大于 “15” 且国家为 “CN” 或 “USA” 的所有网站：</p>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><p>SELECT * FROM Websites WHERE alexa &gt; 15 AND (country=’CN’ OR country=’USA’);</p>
+<p>执行输出结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/and-or3.jpg" alt="img"></p>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><p>And:与 同时满足两个条件的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select * from emp where sal &gt; 2000 and sal &lt; 3000;</span><br></pre></td></tr></table></figure>
+<p>查询 EMP 表中 SAL 列中大于 2000 小于 3000 的值。</p>
+<p>Or:或 满足其中一个条件的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select * from emp where sal &gt; 2000 or comm &gt; 500;</span><br></pre></td></tr></table></figure>
+<p>查询 emp 表中 SAL 大于 2000 或 COMM 大于500的值。</p>
+<p>Not:非 满足不包含该条件的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp where not sal &gt; 1500;</span><br></pre></td></tr></table></figure>
+<p>查询EMP表中 sal 小于等于 1500 的值。</p>
+<p>逻辑运算的优先级：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">()    not        and         or</span><br></pre></td></tr></table></figure>
+<h1 id="SQL-ORDER-BY-关键字"><a href="#SQL-ORDER-BY-关键字" class="headerlink" title="SQL ORDER BY 关键字"></a>SQL ORDER BY 关键字</h1><hr>
+<p>ORDER BY 关键字用于对结果集进行排序。</p>
+<hr>
+<h2 id="SQL-ORDER-BY-关键字-1"><a href="#SQL-ORDER-BY-关键字-1" class="headerlink" title="SQL ORDER BY 关键字"></a>SQL ORDER BY 关键字</h2><p>ORDER BY 关键字用于对结果集按照一个列或者多个列进行排序。</p>
+<p>ORDER BY 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，您可以使用 DESC 关键字。</p>
+<h3 id="SQL-ORDER-BY-语法"><a href="#SQL-ORDER-BY-语法" class="headerlink" title="SQL ORDER BY 语法"></a>SQL ORDER BY 语法</h3><p>SELECT <em>column_name</em>,<em>column_name</em><br>FROM <em>table_name</em><br>ORDER BY <em>column_name</em>,<em>column_name</em> ASC|DESC;</p>
+<hr>
+<h2 id="演示数据库-1"><a href="#演示数据库-1" class="headerlink" title="演示数据库"></a>演示数据库</h2><p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 “Websites” 表的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| id | name         | url                       | alexa | country |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| 1  | Google       | https://www.google.cm/    | 1     | USA     |</span><br><span class="line">| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |</span><br><span class="line">| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |</span><br><span class="line">| 4  | 微博          | http://weibo.com/         | 20    | CN      |</span><br><span class="line">| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="ORDER-BY-实例"><a href="#ORDER-BY-实例" class="headerlink" title="ORDER BY 实例"></a>ORDER BY 实例</h2><p>下面的 SQL 语句从 “Websites” 表中选取所有网站，并按照 “alexa” 列排序：</p>
+<h2 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h2><p>SELECT * FROM Websites ORDER BY alexa;</p>
+<p>执行输出结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/orderby1.jpg" alt="img"></p>
+<hr>
+<h2 id="ORDER-BY-DESC-实例"><a href="#ORDER-BY-DESC-实例" class="headerlink" title="ORDER BY DESC 实例"></a>ORDER BY DESC 实例</h2><p>下面的 SQL 语句从 “Websites” 表中选取所有网站，并按照 “alexa” 列降序排序：</p>
+<h2 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h2><p>SELECT * FROM Websites ORDER BY alexa DESC;</p>
+<p>执行输出结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/orderby2.jpg" alt="img"></p>
+<hr>
+<h2 id="ORDER-BY-多列"><a href="#ORDER-BY-多列" class="headerlink" title="ORDER BY 多列"></a>ORDER BY 多列</h2><p>下面的 SQL 语句从 “Websites” 表中选取所有网站，并按照 “country” 和 “alexa” 列排序：</p>
+<h2 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h2><p>SELECT * FROM Websites ORDER BY country,alexa;</p>
+<p>执行输出结果：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/orderby3.jpg" alt="img"></p>
+<h1 id="SQL-INSERT-INTO-语句"><a href="#SQL-INSERT-INTO-语句" class="headerlink" title="SQL INSERT INTO 语句"></a>SQL INSERT INTO 语句</h1><hr>
+<p>INSERT INTO 语句用于向表中插入新记录。</p>
+<hr>
+<h2 id="SQL-INSERT-INTO-语句-1"><a href="#SQL-INSERT-INTO-语句-1" class="headerlink" title="SQL INSERT INTO 语句"></a>SQL INSERT INTO 语句</h2><p>INSERT INTO 语句用于向表中插入新记录。</p>
+<h3 id="SQL-INSERT-INTO-语法"><a href="#SQL-INSERT-INTO-语法" class="headerlink" title="SQL INSERT INTO 语法"></a>SQL INSERT INTO 语法</h3><p>INSERT INTO 语句可以有两种编写形式。</p>
+<p>第一种形式无需指定要插入数据的列名，只需提供被插入的值即可：</p>
+<p>INSERT INTO <em>table_name</em><br>VALUES (<em>value1</em>,<em>value2</em>,<em>value3</em>,…);</p>
+<p>第二种形式需要指定列名及被插入的值：</p>
+<p>INSERT INTO <em>table_name</em> (<em>column1</em>,<em>column2</em>,<em>column3</em>,…)<br>VALUES (<em>value1</em>,<em>value2</em>,<em>value3</em>,…);</p>
+<hr>
+<h2 id="演示数据库-2"><a href="#演示数据库-2" class="headerlink" title="演示数据库"></a>演示数据库</h2><p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 “Websites” 表的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| id | name         | url                       | alexa | country |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| 1  | Google       | https://www.google.cm/    | 1     | USA     |</span><br><span class="line">| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |</span><br><span class="line">| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |</span><br><span class="line">| 4  | 微博          | http://weibo.com/         | 20    | CN      |</span><br><span class="line">| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="INSERT-INTO-实例"><a href="#INSERT-INTO-实例" class="headerlink" title="INSERT INTO 实例"></a>INSERT INTO 实例</h2><p>假设我们要向 “Websites” 表中插入一个新行。</p>
+<p>我们可以使用下面的 SQL 语句：</p>
+<h2 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h2><p>INSERT INTO Websites (name, url, alexa, country) VALUES (‘百度’,’<a href="https://www.baidu.com/&#39;,&#39;4&#39;,&#39;CN&#39;)" target="_blank" rel="noopener">https://www.baidu.com/&#39;,&#39;4&#39;,&#39;CN&#39;)</a>;</p>
+<p>执行以上 SQL，再读取 “Websites” 表，数据如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/insert1.jpg" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th><img src="http://www.runoob.com/images/lamp.jpg" alt="lamp"></th>
+<th><strong>您是否注意到，我们没有向 id 字段插入任何数字？</strong> id 列是自动更新的，表中的每条记录都有一个唯一的数字。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="在指定的列插入数据"><a href="#在指定的列插入数据" class="headerlink" title="在指定的列插入数据"></a>在指定的列插入数据</h2><p>我们也可以在指定的列插入数据。</p>
+<p>下面的 SQL 语句将插入一个新行，但是只在 “name”、”url” 和 “country” 列插入数据（id 字段会自动更新）：</p>
+<h2 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h2><p>INSERT INTO Websites (name, url, country) VALUES (‘stackoverflow’, ‘<a href="http://stackoverflow.com/&#39;" target="_blank" rel="noopener">http://stackoverflow.com/&#39;</a>, ‘IND’);</p>
+<p>执行以上 SQL，再读取 “Websites” 表，数据如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/insert2.jpg" alt="img"></p>
+<h1 id="SQL-UPDATE-语句"><a href="#SQL-UPDATE-语句" class="headerlink" title="SQL UPDATE 语句"></a>SQL UPDATE 语句</h1><hr>
+<p>UPDATE 语句用于更新表中的记录。</p>
+<hr>
+<h2 id="SQL-UPDATE-语句-1"><a href="#SQL-UPDATE-语句-1" class="headerlink" title="SQL UPDATE 语句"></a>SQL UPDATE 语句</h2><p>UPDATE 语句用于更新表中已存在的记录。</p>
+<h3 id="SQL-UPDATE-语法"><a href="#SQL-UPDATE-语法" class="headerlink" title="SQL UPDATE 语法"></a>SQL UPDATE 语法</h3><p>UPDATE <em>table_name</em><br>SET <em>column1</em>=<em>value1</em>,<em>column2</em>=<em>value2</em>,…<br>WHERE <em>some_column</em>=<em>some_value</em>;</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://www.runoob.com/images/lamp.jpg" alt="lamp"></th>
+<th><strong>请注意 SQL UPDATE 语句中的 WHERE 子句！</strong> WHERE 子句规定哪条记录或者哪些记录需要更新。如果您省略了 WHERE 子句，所有的记录都将被更新！</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="演示数据库-3"><a href="#演示数据库-3" class="headerlink" title="演示数据库"></a>演示数据库</h2><p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 “Websites” 表的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| id | name         | url                       | alexa | country |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| 1  | Google       | https://www.google.cm/    | 1     | USA     |</span><br><span class="line">| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |</span><br><span class="line">| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |</span><br><span class="line">| 4  | 微博          | http://weibo.com/         | 20    | CN      |</span><br><span class="line">| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="SQL-UPDATE-实例"><a href="#SQL-UPDATE-实例" class="headerlink" title="SQL UPDATE 实例"></a>SQL UPDATE 实例</h2><p>假设我们要把 “菜鸟教程” 的 alexa 排名更新为 5000，country 改为 USA。</p>
+<p>我们使用下面的 SQL 语句：</p>
+<h2 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h2><p>UPDATE Websites  SET alexa=’5000’, country=’USA’  WHERE name=’菜鸟教程’;</p>
+<p>执行以上 SQL，再读取 “Websites” 表，数据如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/update1.jpg" alt="img"></p>
+<hr>
+<h2 id="Update-警告！"><a href="#Update-警告！" class="headerlink" title="Update 警告！"></a>Update 警告！</h2><p>在更新记录时要格外小心！在上面的实例中，如果我们省略了 WHERE 子句，如下所示：</p>
+<p>UPDATE Websites<br>SET alexa=’5000’, country=’USA’</p>
+<p>执行以上代码会将 Websites 表中所有数据的 alexa 改为 5000，country 改为 USA。</p>
+<p>执行没有 WHERE 子句的 UPDATE 要慎重，再慎重。</p>
+<h1 id="SQL-DELETE-语句"><a href="#SQL-DELETE-语句" class="headerlink" title="SQL DELETE 语句"></a>SQL DELETE 语句</h1><hr>
+<p>DELETE 语句用于删除表中的记录。</p>
+<hr>
+<h2 id="SQL-DELETE-语句-1"><a href="#SQL-DELETE-语句-1" class="headerlink" title="SQL DELETE 语句"></a>SQL DELETE 语句</h2><p>DELETE 语句用于删除表中的行。</p>
+<h3 id="SQL-DELETE-语法"><a href="#SQL-DELETE-语法" class="headerlink" title="SQL DELETE 语法"></a>SQL DELETE 语法</h3><p>DELETE FROM <em>table_name</em><br>WHERE <em>some_column</em>=<em>some_value</em>;</p>
+<table>
+<thead>
+<tr>
+<th><img src="http://www.runoob.com/images/lamp.jpg" alt="lamp"></th>
+<th><strong>请注意 SQL DELETE 语句中的 WHERE 子句！</strong> WHERE 子句规定哪条记录或者哪些记录需要删除。如果您省略了 WHERE 子句，所有的记录都将被删除！</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="演示数据库-4"><a href="#演示数据库-4" class="headerlink" title="演示数据库"></a>演示数据库</h2><p>在本教程中，我们将使用 RUNOOB 样本数据库。</p>
+<p>下面是选自 “Websites” 表的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| id | name         | url                       | alexa | country |</span><br><span class="line">+----+--------------+---------------------------+-------+---------+</span><br><span class="line">| 1  | Google       | https://www.google.cm/    | 1     | USA     |</span><br><span class="line">| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |</span><br><span class="line">| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |</span><br><span class="line">| 4  | 微博          | http://weibo.com/         | 20    | CN      |</span><br><span class="line">| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |</span><br><span class="line">|  6 | 百度         | https://www.baidu.com/    |     4 | CN      |</span><br><span class="line">|  7 | stackoverflow | http://stackoverflow.com/ |     0 | IND     |</span><br><span class="line">+----+---------------+---------------------------+-------+---------+</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="SQL-DELETE-实例"><a href="#SQL-DELETE-实例" class="headerlink" title="SQL DELETE 实例"></a>SQL DELETE 实例</h2><p>假设我们要从 “Websites” 表中删除网站名为 “百度” 且国家为 CN 的网站 。</p>
+<p>我们使用下面的 SQL 语句：</p>
+<h2 id="实例-9"><a href="#实例-9" class="headerlink" title="实例"></a>实例</h2><p>DELETE FROM Websites WHERE name=’百度’ AND country=’CN’;</p>
+<p>执行以上 SQL，再读取 “Websites” 表，数据如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/B956E143-C197-406F-BD42-550EE390C980.jpg" alt="img"></p>
+<hr>
+<h2 id="删除所有数据"><a href="#删除所有数据" class="headerlink" title="删除所有数据"></a>删除所有数据</h2><p>您可以在不删除表的情况下，删除表中所有的行。这意味着表结构、属性、索引将保持不变：</p>
+<p>DELETE FROM <em>table_name</em>;<br>或<br>DELETE <em> FROM </em>table_name*;</p>
+<p><strong>注释：</strong>在删除记录时要格外小心！因为您不能重来！</p>
+</div></div><div class="post-main post-comment"></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"/><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>

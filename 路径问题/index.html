@@ -1,0 +1,32 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="我的博客"/><title> | 知识汇集</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/highlight.css"/><link rel="stylesheet" type="text/css" href="/css/font.css"/><link rel="stylesheet" type="text/css" href="/css/noise.css"/><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a></nav><div class="container post-meta"><div class="post-time">2018-05-16</div></div></div><div class="container post-header"><h1></h1></div><div class="container post-content"><hr>
+<p>title：路径的相关问题<br>date：2018年5月16日15:23:26<br>categories：</p>
+<ul>
+<li>other<br>tags：</li>
+<li>斜杠和反斜杠</li>
+<li>路径</li>
+</ul>
+<hr>
+<h2 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h2><p>在html中经常需要用到链接其他的页面或者图片，而链接的路径容易搞混</p>
+<p>假设有两个文件index.html和home.html分别处于不同的路径</p>
+<h4 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h4><ul>
+<li><p>处于同级目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设index.html处于C:/a/b/index.html</span><br><span class="line">假设home.html处于C:/a/b/home.html</span><br><span class="line">在index中引用home，超链接的代码为&lt;a href=&quot;home.html&quot;&gt;home.html&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>index.html处于home.html上级目录</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设index.html处于C:/a/b/index.html</span><br><span class="line">假设home.html处于C:/a/b/c/home.html</span><br><span class="line">在index中引用home，超链接的代码为&lt;a href=&quot;c/home.html&quot;&gt;home.html&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设index.html处于C:/a/b/index.html</span><br><span class="line">假设home.html处于C:/a/b/c/d/home.html</span><br><span class="line">在index中引用home，超链接的代码为&lt;a href=&quot;c/d/home.html&quot;&gt;home.html&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>index.html处于home.html下级目录</p>
+<p>如何表示上级目录  ../表示源文件所在目录的上一级目录，../../表示源文件所在目录的上上级目录，以此类推。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设index.html处于C:/a/b/c/index.html</span><br><span class="line">假设home.html处于C:/a/b/home.html</span><br><span class="line">在index中引用home，超链接的代码为&lt;a href=&quot;../home.html&quot;&gt;home.html&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设index.html处于C:/a/b/c/d/index.html</span><br><span class="line">假设home.html处于C:/a/b/home.html</span><br><span class="line">在index中引用home，超链接的代码为&lt;a href=&quot;../../home.html&quot;&gt;home.html&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h4><p>HTML绝对路径(absolute path)指带域名的文件的完整路径。<br>假设你注册了域名<a href="http://www.jb51.net，并申请了虚拟主机，你的虚拟主机提供商会给你一个目录，比如www，这个www就是你网站的根目录。" target="_blank" rel="noopener">www.jb51.net，并申请了虚拟主机，你的虚拟主机提供商会给你一个目录，比如www，这个www就是你网站的根目录。</a><br>假设你在www根目录下放了一个文件index.html，这个文件的绝对路径就是： <a href="http://www.jb51.net/index.html。" target="_blank" rel="noopener">http://www.jb51.net/index.html。</a><br>假设你在www根目录下建了一个目录叫html_tutorials，然后在该目录下放了一个文件index.html，这个文件的绝对路径就是<a href="http://www.jb51.net/html_tutorials/index.html。" target="_blank" rel="noopener">http://www.jb51.net/html_tutorials/index.html。</a> </p>
+<h2 id="斜杠和反斜杠"><a href="#斜杠和反斜杠" class="headerlink" title="斜杠和反斜杠"></a>斜杠和反斜杠</h2><p>​    在Unix/Linux中，路径的分隔采用正斜杠”/“,在Windows中使用反斜杠”\”分隔。<br>​    有时我们会看到这样的路径写法，”C:\\Windows\\System”，也就是用两个反斜杠来分隔路径，这种写法在网络应用或编程中经常看到，事实上，上面这个路径可以用”C:/Windows/System”来代替，不会出错。但是如果写成了”C:\Windows\System”，那就可能会出现各种奇怪的错误了。 　　至于上述问题出现的原因，要从字符串解析这方面来分析。 　　学过编程的人都应该知道，在C里面，输出字符串时，如果想输出一个换行，那就要加上’\n’这个标志，类似的，输出一个TAB，就加上’\t’，也就是说，反斜杠(“\”)这个符号会把跟在它后面的字符结合起来转义成其它字符。根据这个原理，如果想输出双引号(‘“‘)，就需要输入’\”‘，这样才会将包含了双引号的字符串正确的写入内存中。那么如果想输入一个反斜杠呢？很简单，只要敲’\‘就可以了。<br>  　　看到这里或许有些人已经看出眉目了，如果”C:\Windows\System”这个路径字符串交给C编译器编译，实际写入内存的字符串并没有包含反斜杠”\”，甚至紧跟在反斜杠后面的字母也一起被转义成了其它的字符，再次调用的话势必会出问题。 　　<br>​    字符串解析不仅仅局限于C编译器，Java编译器、一些配置文件的解析、Web服务器等等，都会遇到对字符串进行解析的这个问题，由于传统的Windows采用的是单个斜杠的路径分隔形式，导致在对文件路径进行解析的时候可能发生不必要的错误，所以就出现了用双反斜杠”\“分隔路径的形式。不管解析引擎是否将反斜杠解析成转义字符，最终在内存中得到的都是”\”，结果也就不会出问题了。  　　<br>    由此也可以看出Windows或者说DOS在设计初期考虑不够周全，为了和Unix一些特征区别开来，将Unix中的正斜杠”/“分隔路径方式改变成了反斜杠”\”。这样改变导致的一个问题就是在早期DOS命令行中，正常的文件名是不能包含空格的，如果包含了空格，会导致输入这样的文件名时，命令解析无法将其和参数区分开。例如，想要进入”hutaow yuan”这个目录（在此先忽略8.3命名规则），直接输入”cd hutaow yuan”，命令行会将其解析为进入”hutaow”目录，而后面的”yuan”做参数，这显然不是所期望的。 　　<br>    而在Unix中，文件名如果包含空格，可以直接在空格前加上反斜杠”\”进行转义，从而很好的和命令参数区别出来（参数之间一般使用空格分隔）。还是上面的例子，在Unix中，只要输入”cd hutaow\ yuan”(在yuan前面的空格前加上”\”)，命令行会正确的辨认出”hutaow yuan”并进入这个目录。 　　<br>    当然，现在Windows的后续版本已经使用其它方法（比如文件名用双引号括住）解决了空格问题。 </p>
+</div></div><div class="post-main post-comment"></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"/><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
