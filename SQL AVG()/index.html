@@ -1,0 +1,104 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="我的博客"/><title>sql3 | 知识汇集</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/highlight.css"/><link rel="stylesheet" type="text/css" href="/css/font.css"/><link rel="stylesheet" type="text/css" href="/css/noise.css"/><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/mysql/">mysql</a></div><div class="post-time">2018-05-22</div></div></div><div class="container post-header"><h1>sql3</h1></div><div class="container post-content"><p>sql的第三部分函数部分</p>
+<h2 id="SQL-AVG"><a href="#SQL-AVG" class="headerlink" title="SQL AVG()"></a><a href="http://www.runoob.com/sql/sql-func-avg.html" target="_blank" rel="noopener">SQL AVG()</a></h2><p>AVG() 函数返回数值列的平均值 </p>
+<p>下面的 SQL 语句选择访问量高于平均访问量的 “site_id” 和 “count”：</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>SELECT site_id, count FROM access_log<br>WHERE count &gt; (SELECT AVG(count) FROM access_log);</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/avg2.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-count.html" target="_blank" rel="noopener">SQL COUNT()</a> </p>
+<p>COUNT() 函数返回匹配指定条件的行数。 </p>
+<h2 id="SQL-COUNT-实例"><a href="#SQL-COUNT-实例" class="headerlink" title="SQL COUNT(*) 实例"></a>SQL COUNT(*) 实例</h2><p>下面的 SQL 语句计算 “access_log” 表中总记录数：</p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p>SELECT COUNT(*) AS nums FROM access_log;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/count1.jpg" alt="img"></p>
+<hr>
+<h2 id="SQL-COUNT-DISTINCT-column-name-实例"><a href="#SQL-COUNT-DISTINCT-column-name-实例" class="headerlink" title="SQL COUNT(DISTINCT column_name) 实例"></a>SQL COUNT(DISTINCT column_name) 实例</h2><p>下面的 SQL 语句计算 “access_log” 表中不同 site_id 的记录数：</p>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><p>SELECT COUNT(DISTINCT site_id) AS nums FROM access_log;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/count2.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-first.html" target="_blank" rel="noopener">SQL FIRST()</a></p>
+<p>FIRST() 函数返回指定的列中第一个记录的值。 </p>
+<h3 id="SQL-FIRST-语法"><a href="#SQL-FIRST-语法" class="headerlink" title="SQL FIRST() 语法"></a>SQL FIRST() 语法</h3><p>SELECT FIRST(column_name) FROM table_name;</p>
+<p><strong>注释：</strong>只有 MS Access 支持 FIRST() 函数。</p>
+<h3 id="MySQL-语法"><a href="#MySQL-语法" class="headerlink" title="MySQL 语法"></a>MySQL 语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name FROM table_name ORDER BY column_name ASC LIMIT 1;</span><br></pre></td></tr></table></figure>
+<h2 id="SQL-LAST"><a href="#SQL-LAST" class="headerlink" title="SQL LAST()"></a><a href="http://www.runoob.com/sql/sql-func-last.html" target="_blank" rel="noopener">SQL LAST()</a></h2><p>LAST() 函数返回指定的列中最后一个记录的值。</p>
+<h3 id="SQL-LAST-语法"><a href="#SQL-LAST-语法" class="headerlink" title="SQL LAST() 语法"></a>SQL LAST() 语法</h3><p>SELECT LAST(column_name) FROM table_name;</p>
+<p><strong>注释：</strong>只有 MS Access 支持 LAST() 函数。</p>
+<h3 id="MySQL-语法-1"><a href="#MySQL-语法-1" class="headerlink" title="MySQL 语法"></a>MySQL 语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name FROM table_name  ORDER BY column_name DESC IMIT 1;</span><br></pre></td></tr></table></figure>
+<p>##<a href="http://www.runoob.com/sql/sql-func-max.html" target="_blank" rel="noopener">SQL MAX()</a></p>
+<p>MAX() 函数返回指定列的最大值。 </p>
+<h2 id="SQL-MAX-实例"><a href="#SQL-MAX-实例" class="headerlink" title="SQL MAX() 实例"></a>SQL MAX() 实例</h2><p>下面的 SQL 语句从 “Websites” 表的 “alexa” 列获取最大值：</p>
+<h2 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h2><p>SELECT MAX(alexa) AS max_alexa FROM Websites;</p>
+<p>执行以上 SQL 结果如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/max1.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-min.html" target="_blank" rel="noopener">SQL MIN()</a></p>
+<p>MIN() 函数返回指定列的最小值。 </p>
+<h2 id="SQL-MIN-实例"><a href="#SQL-MIN-实例" class="headerlink" title="SQL MIN() 实例"></a>SQL MIN() 实例</h2><p>下面的 SQL 语句从 “Websites” 表的 “alexa” 列获取最小值：</p>
+<h2 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h2><p>SELECT MIN(alexa) AS min_alexa FROM Websites;</p>
+<p>执行以上 SQL 结果如下所示：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/min1.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-sum.html" target="_blank" rel="noopener">SQL SUM()</a></p>
+<p>SUM() 函数返回数值列的总数。 </p>
+<h2 id="SQL-SUM-实例"><a href="#SQL-SUM-实例" class="headerlink" title="SQL SUM() 实例"></a>SQL SUM() 实例</h2><p>下面的 SQL 语句查找 “access_log” 表的 “count” 字段的总数：</p>
+<h2 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h2><p>SELECT SUM(count) AS nums FROM access_log;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/sum1.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-groupby.html" target="_blank" rel="noopener">SQL GROUP BY</a></p>
+<p>GROUP BY 语句用于结合聚合函数，根据一个或多个列对结果集进行分组。 </p>
+<h2 id="GROUP-BY-简单应用"><a href="#GROUP-BY-简单应用" class="headerlink" title="GROUP BY 简单应用"></a>GROUP BY 简单应用</h2><p>统计 access_log 各个 site_id 的访问量：</p>
+<h2 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h2><p>SELECT site_id, SUM(access_log.count) AS nums<br>FROM access_log GROUP BY site_id;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/groupby1.jpg" alt="img"></p>
+<hr>
+<h2 id="SQL-GROUP-BY-多表连接"><a href="#SQL-GROUP-BY-多表连接" class="headerlink" title="SQL GROUP BY 多表连接"></a>SQL GROUP BY 多表连接</h2><p>现在我们想要查找每个送货员配送的订单数目。</p>
+<p>下面的 SQL 语句统计所有网站的访问的记录数：</p>
+<h2 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h2><p>SELECT Websites.name,COUNT(access_log.aid) AS nums FROM access_log<br>LEFT JOIN Websites<br>ON access_log.site_id=Websites.id<br>GROUP BY Websites.name;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/groupby2.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-having.html" target="_blank" rel="noopener">SQL HAVING</a></p>
+<h2 id="SQL-HAVING-实例"><a href="#SQL-HAVING-实例" class="headerlink" title="SQL HAVING 实例"></a>SQL HAVING 实例</h2><p>现在我们想要查找总访问量大于 200 的网站。</p>
+<p>我们使用下面的 SQL 语句：</p>
+<h2 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h2><p>SELECT Websites.name, Websites.url, SUM(access_log.count) AS nums FROM (access_log<br>INNER JOIN Websites<br>ON access_log.site_id=Websites.id)<br>GROUP BY Websites.name<br>HAVING SUM(access_log.count) &gt; 200;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/having1.jpg" alt="img"></p>
+<p>现在我们想要查找总访问量大于 200 的网站，并且 alexa 排名小于 200。</p>
+<p>我们在 SQL 语句中增加一个普通的 WHERE 子句：</p>
+<h2 id="实例-9"><a href="#实例-9" class="headerlink" title="实例"></a>实例</h2><p>SELECT Websites.name, SUM(access_log.count) AS nums FROM Websites<br>INNER JOIN access_log<br>ON Websites.id=access_log.site_id<br>WHERE Websites.alexa &lt; 200<br>GROUP BY Websites.name<br>HAVING SUM(access_log.count) &gt; 200;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/having2.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-ucase.html" target="_blank" rel="noopener">SQL UCASE()</a></p>
+<p>UCASE() 函数把字段的值转换为大写。 </p>
+<h2 id="SQL-UCASE-实例"><a href="#SQL-UCASE-实例" class="headerlink" title="SQL UCASE() 实例"></a>SQL UCASE() 实例</h2><p>下面的 SQL 语句从 “Websites” 表中选取 “name” 和 “url” 列，并把 “name” 列的值转换为大写：</p>
+<h2 id="实例-10"><a href="#实例-10" class="headerlink" title="实例"></a>实例</h2><p>SELECT UCASE(name) AS site_title, url<br>FROM Websites;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/ucase1.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-lcase.html" target="_blank" rel="noopener">SQL LCASE()</a></p>
+<p>LCASE() 函数把字段的值转换为小写。 </p>
+<h2 id="SQL-LCASE-实例"><a href="#SQL-LCASE-实例" class="headerlink" title="SQL LCASE() 实例"></a>SQL LCASE() 实例</h2><p>下面的 SQL 语句从 “Websites” 表中选取 “name” 和 “url” 列，并把 “name” 列的值转换为小写：</p>
+<h2 id="实例-11"><a href="#实例-11" class="headerlink" title="实例"></a>实例</h2><p>SELECT LCASE(name) AS site_title, url<br>FROM Websites;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/lcase1.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-mid.html" target="_blank" rel="noopener">SQL MID()</a></p>
+<p>MID() 函数用于从文本字段中提取字符。 </p>
+<h2 id="SQL-MID-实例"><a href="#SQL-MID-实例" class="headerlink" title="SQL MID() 实例"></a>SQL MID() 实例</h2><p>下面的 SQL 语句从 “Websites” 表的 “name” 列中提取前 4 个字符：</p>
+<h2 id="实例-12"><a href="#实例-12" class="headerlink" title="实例"></a>实例</h2><p>SELECT MID(name,1,4) AS ShortTitle<br>FROM Websites;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/mid1.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-len.html" target="_blank" rel="noopener">SQL LEN()</a></p>
+<p>LEN() 函数返回文本字段中值的长度。 </p>
+<h2 id="SQL-LEN-实例"><a href="#SQL-LEN-实例" class="headerlink" title="SQL LEN() 实例"></a>SQL LEN() 实例</h2><p>下面的 SQL 语句从 “Websites” 表中选取 “name” 和 “url” 列中值的长度：</p>
+<h2 id="实例-13"><a href="#实例-13" class="headerlink" title="实例"></a>实例</h2><p>SELECT name, LENGTH(url) as LengthOfURL<br>FROM Websites;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/len1.jpg" alt="img"></p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-round.html" target="_blank" rel="noopener">SQL ROUND()</a></p>
+<p>ROUND() 函数用于把数值字段舍入为指定的小数位数。</p>
+<h3 id="SQL-ROUND-语法"><a href="#SQL-ROUND-语法" class="headerlink" title="SQL ROUND() 语法"></a>SQL ROUND() 语法</h3><p>SELECT ROUND(column_name,decimals) FROM table_name;</p>
+<p>##<a href="http://www.runoob.com/sql/sql-func-format.html" target="_blank" rel="noopener">SQL FORMAT()</a></p>
+<p>FORMAT() 函数用于对字段的显示进行格式化。 </p>
+<p>下面的 SQL 语句从 “Websites” 表中选取 name, url 以及格式化为 YYYY-MM-DD 的日期：</p>
+<h2 id="实例-14"><a href="#实例-14" class="headerlink" title="实例"></a>实例</h2><p>SELECT name, url, DATE_FORMAT(Now(),’%Y-%m-%d’) AS date<br>FROM Websites;</p>
+<p>执行以上 SQL 输出结果如下：</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/09/formate1.jpg" alt="img"></p>
+</div></div><div class="post-main post-comment"></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"/><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
